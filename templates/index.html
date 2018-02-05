@@ -1,11 +1,38 @@
+
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+	#map {
+        height: 500px;
+        width: 500px;
+	}
+</style>
+</head>
+
+
 <body>
-<pre>
-<code>
-    ATM list
-	{{ atms_json }}
-</code>
-</pre>
+    <h3>ATMs</h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: {{locations.0.0 }}, lng: {{locations.0.1}} };
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+		{% for atm in locations %}
+			
+			var marker = new google.maps.Marker({
+			position: {lat: {{atm.0 }}, lng: {{atm.1}} },
+			map: map
+			});
+    	{% endfor %}
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqw15EBB-oTZ9wi29EK4ZKml9ZzYpdtXc&callback=initMap">
+    </script>
+
 </body>
 </html>

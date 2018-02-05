@@ -8,5 +8,14 @@ def list(request):
     """
 
     r = requests.get('https://api.lloydsbank.com/open-banking/v1.2/atms')
-    json_pretty = json.dumps(r.json(), sort_keys=True, indent=4)
-    return render(request, 'index.html', {'atms_json':json_pretty})
+
+    # walk through the ATM objects and extract lat and long to dict
+    data = r.json()['data']
+    locations = []
+    for atm in data:
+        latitude = atm['GeographicLocation']['Latitude']
+        longitude = atm['GeographicLocation']['Longitude']
+        locations.append((latitude, longitude))
+
+
+    return render(request, 'index.html', {'locations':locations})
