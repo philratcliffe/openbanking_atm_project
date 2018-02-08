@@ -1,3 +1,12 @@
 from django.contrib import admin
+from .models import ATM
+from .models import ATMService
 
-# Register your models here.
+class ATMAdmin(admin.ModelAdmin):
+    pass
+
+class ATMServices(admin.ModelAdmin):
+    pass
+
+admin.site.register(ATM)
+admin.site.register(ATMService)
