@@ -22,7 +22,6 @@
           center: uluru
         });
 		{% for atm in locations %}
-			
 			var marker = new google.maps.Marker({
 			position: {lat: {{atm.0 }}, lng: {{atm.1}} },
 			map: map
