@@ -33,8 +33,6 @@ def list(request):
         atm_services = atm['ATMServices']
         atm_record = ATM(atmid=atmid)
         atm_record.save()
-        if i == 10:
-            import pdb;pdb.set_trace()
 
     atm_json_data = r.json()
     atm_json_pretty = json.dumps(r.json(), sort_keys=True, indent=4)
