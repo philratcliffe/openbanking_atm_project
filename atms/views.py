@@ -9,7 +9,7 @@ def map(request):
     Displays ATM info on a map
     """
 
-    r = requests.get('https://api.lloydsbank.com/open-banking/v1.2/atms')
+    r = requests.get('https://api.lloydsbank.com/open-banking/v2.2/atms')
 
     # walk through the ATM objects and extract latitude and longitude
     data = r.json()['data']
@@ -26,15 +26,8 @@ def list(request):
     Returns ATM info
     """
 
-    r = requests.get('https://api.lloydsbank.com/open-banking/v1.2/atms')
-    data = r.json()['data']
-    for i, atm in enumerate(data):
-        atmid = atm['ATMID']
-        atm_services = atm['ATMServices']
-        atm_record = ATM(atmid=atmid)
-        atm_record.save()
+    r = requests.get('https://api.lloydsbank.com/open-banking/v2.1/atms')
 
-    atm_json_data = r.json()
     atm_json_pretty = json.dumps(r.json(), sort_keys=True, indent=4)
 
     return render(request, 'list.html', {'atm_json_pretty':atm_json_pretty})
