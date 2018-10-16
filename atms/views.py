@@ -1,8 +1,6 @@
 from django.shortcuts import render
 import requests
 import json
-from .models import ATM
-from .models import ATMService
 
 def map(request):
     """
@@ -13,10 +11,11 @@ def map(request):
 
     # walk through the ATM objects and extract latitude and longitude
     data = r.json()['data']
+    atm_list = data[0]['Brand'][0]['ATM']
     locations = []
-    for atm in data:
-        latitude = atm['GeographicLocation']['Latitude']
-        longitude = atm['GeographicLocation']['Longitude']
+    for atm in atm_list:
+        latitude = atm['Location']['PostalAddress']['GeoLocation']['GeographicCoordinates']['Latitude']
+        longitude = atm['Location']['PostalAddress']['GeoLocation']['GeographicCoordinates']['Longitude']
         locations.append((latitude, longitude))
 
     return render(request, 'map.html', {'locations':locations})
@@ -26,7 +25,7 @@ def list(request):
     Returns ATM info
     """
 
-    r = requests.get('https://api.lloydsbank.com/open-banking/v2.1/atms')
+    r = requests.get('https://api.lloydsbank.com/open-banking/v2.2/atms')
 
     atm_json_pretty = json.dumps(r.json(), sort_keys=True, indent=4)
 
