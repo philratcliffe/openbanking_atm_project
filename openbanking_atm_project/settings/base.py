@@ -19,6 +19,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
+# Your Google Maps API key
+GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY')
+
 # SECURITY WARNING: keep the SECRET_KEY used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
