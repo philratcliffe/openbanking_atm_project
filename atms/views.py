@@ -1,6 +1,8 @@
 from django.shortcuts import render
 import requests
 import json
+from django.conf import settings
+
 
 def map(request):
     """
@@ -18,7 +20,7 @@ def map(request):
         longitude = atm['Location']['PostalAddress']['GeoLocation']['GeographicCoordinates']['Longitude']
         locations.append((latitude, longitude))
 
-    return render(request, 'map.html', {'locations':locations})
+    return render(request, 'map.html', {'locations': locations, 'GOOGLE_API_KEY': settings.GOOGLE_API_KEY})
 
 def list(request):
     """
@@ -29,4 +31,4 @@ def list(request):
 
     atm_json_pretty = json.dumps(r.json(), sort_keys=True, indent=4)
 
-    return render(request, 'list.html', {'atm_json_pretty':atm_json_pretty})
+    return render(request, 'list.html', {'atm_json_pretty': atm_json_pretty})
