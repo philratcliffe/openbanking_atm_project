@@ -1,12 +1,21 @@
 # Open Banking ATMs
 
 ## Overview
-Just a simple test app to play with the open banking API. Gets ATM info from
-a bank and presents it in different ways.  At the moment, just shows a map with
-ATM location markers and the ATM data in formatted JSON.
+An app to exercise an Open Banking API. It gets data on ATMs from
+a bank and presents ATM locations on a map, it also shows the ATM data in formatted JSON.
 
 ## Running the Django development server
-
+The command to run the Django development server is shown below.
 ```bash
 $python manage.py runserver --settings=openbanking_atm_project.settings.local
 ```
+
+## Viewing the results 
+#### The ATM map
+The ATM map can be viewed at:
+    http://localhost:8000/atms/map
+
+#### The ATM data 
+The ATM data can be viewed at:
+    http://localhost:8000/atms/list
+    
