@@ -19,13 +19,19 @@ The ATM map can be viewed at:
 The ATM data can be viewed at:
     http://localhost:8000/atms/list
     
+## Required environment variables
+You need to set the following environment variables:
+
+* GOOGLE_API_KEY
+* DJANGO_SECRET_KEY
+    
 ## Notes for running in PyCharm
 If you wish to run this under PyCharm, follow the instructions below.
 
-* Under Django settings, set DJANGO support enabled for the project.
+* Under Django settings, set the required environment variables (see above)
 
-* Under Django settings, set the DJANGO_SECRET_KEY environment variable.
+* Under Django settings, set the required environment variable.
 
 * Create a Django server configuration for running the project.
  
-* Under the Django server configuration set the DJANGO_SECRET_KEY environment variable.
+* Under the Django server configuration set the required environment variable.
