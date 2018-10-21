@@ -19,3 +19,13 @@ The ATM map can be viewed at:
 The ATM data can be viewed at:
     http://localhost:8000/atms/list
     
+## Notes for running in PyCharm
+If you wish to run this under PyCharm, follow the instructions below.
+
+* Under Django settings, set DJANGO support enabled for the project.
+
+* Under Django settings, set the DJANGO_SECRET_KEY environment variable.
+
+* Create a Django server configuration for running the project.
+ 
+* Under the Django server configuration set the DJANGO_SECRET_KEY environment variable.
