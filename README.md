@@ -20,7 +20,7 @@ The ATM data can be viewed at:
     http://localhost:8000/atms/list
     
 ## Required environment variables
-You need to set the following environment variables:
+Before running the Django project, you will need to set the following environment variables:
 
 * GOOGLE_API_KEY
 * DJANGO_SECRET_KEY
