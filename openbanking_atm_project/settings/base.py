@@ -12,6 +12,18 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 from pathlib import Path
+from django.core.exceptions import ImproperlyConfigured
+
+
+def get_env_variable(var_name):
+    """ Get the environment variable or return an exception. """
+
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        error_msg = f'You need to set the {var_name} environment variable.'
+        raise ImproperlyConfigured(error_msg)
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -19,11 +31,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
-# Your Google Maps API key
-GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY')
-
 # SECURITY WARNING: keep the SECRET_KEY used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+SECRET_KEY = get_env_variable('DJANGO_SECRET_KEY')
+
+# Your Google Maps API key
+GOOGLE_API_KEY = get_env_variable('GOOGLE_API_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
