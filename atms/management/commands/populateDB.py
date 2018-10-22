@@ -13,7 +13,7 @@ class Command(BaseCommand):
         atm_list = data[0]['Brand'][0]['ATM']
 
         # Delete existing entries in the database
-        ATM.objects.all.delete()
+        ATM.objects.all().delete()
 
         for atm_data in atm_list:
             atm = ATM()
