@@ -1,5 +1,5 @@
 from django.test import TestCase
-from atms.models import ATM
+from ..models import ATM
 
 
 class ATMTestCase(TestCase):
