@@ -1,8 +1,8 @@
 # Open Banking ATMs
 
 ## Overview
-An app to exercise an Open Banking API. It gets data on ATMs from
-a bank and presents ATM locations on a map, it also shows the ATM data in formatted JSON.
+An app to exercise an Open Banking API. It gets ATM data from
+a bank and presents it as locations on a map and in formatted JSON.
 
 ## Running the Django development server
 The command to run the Django development server is shown below.
@@ -30,8 +30,8 @@ If you wish to run this under PyCharm, follow the instructions below.
 
 * Under Django settings, set the required environment variables (see above)
 
-* Under Django settings, set the required environment variable.
+* Under Django settings, set the required environment variables.
 
 * Create a Django server configuration for running the project.
  
-* Under the Django server configuration set the required environment variable.
+* Under the Django server configuration set the required environment variables.
