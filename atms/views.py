@@ -1,7 +1,23 @@
 from django.shortcuts import render
+from django.conf import settings
+from django.views.generic import TemplateView
+from django.views.generic.list import ListView
 import requests
 import json
-from django.conf import settings
+
+from .models import ATM
+
+
+class HomeView(TemplateView):
+    """Displays the home page"""
+    template_name = "home.html"
+
+
+class ATMListView(ListView):
+    """List ATM data from the database"""
+    template_name = "atms/local_list.html"
+    queryset = ATM.objects.all()
+    context_object_name = 'atm_list'
 
 
 def map(request):
@@ -22,9 +38,10 @@ def map(request):
 
     return render(request, 'map.html', {'locations': locations, 'GOOGLE_API_KEY': settings.GOOGLE_API_KEY})
 
+
 def list(request):
     """
-    Returns ATM info
+    Displays ATM info in JSON format.
     """
 
     r = requests.get('https://api.lloydsbank.com/open-banking/v2.2/atms')
