@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+
+<body>
+<h1>Local ATM List</h1>
+<p>Below we display the ATM data we have stored locally in the database.</p>
+{% for atm in atm_list %}
+    <ul>
+        <li>{{ atm }}</li>
+        Accessibility:
+        <br/>
+        {% for accessibility in atm.accessibility.all %}
+            &nbsp;&nbsp;{{ accessibility }}<br/>
+        {% endfor %}
+        <br/>
+    </ul>
+{% endfor %}
+
+</body>
+</html>
