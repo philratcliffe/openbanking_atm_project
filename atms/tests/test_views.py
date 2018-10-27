@@ -28,5 +28,14 @@ class HomePageTests(SimpleTestCase):
         self.assertNotContains(response, 'error')
 
 
+class MapPageTests(SimpleTestCase):
+
+    def test_map_page_status_code(self):
+        response = self.client.get('/atms/map/')
+        self.assertEquals(response.status_code, 200)
+
+    def test_view_url_by_name(self):
+        response = self.client.get(reverse('atms-views-map'))
+        self.assertEquals(response.status_code, 200)
 
 
