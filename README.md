@@ -39,7 +39,7 @@ If you wish to run this under PyCharm, follow the instructions below.
 ## Notes if running under Docker
 
 ### .env file
-Set up the necessary environment variables in this file§. Below is
+Set up the necessary environment variables in this file. Below is
 an example of a .env file.
 
 ```bash
@@ -47,5 +47,19 @@ an example of a .env file.
 DJANGO_SECRET_KEY=changethisforproduction
 GOOGLE_API_KEY=yourGoogleAPIKeyHere
 
+```
+
+### running migrate
+To run database migrations use the command below.
+
+```bash 
+$ docker-compose run web python manage.py migrate --settings openbanking_atm_project.settings.local
+```
+
+###
+To run the application use the command below.
+
+```bash 
+$ docker-compose up
 ```
 
